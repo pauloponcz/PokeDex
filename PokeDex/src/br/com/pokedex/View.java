@@ -34,7 +34,7 @@ public class View {
         System.out.println("============================");
         System.out.println("|  POKEMON " + pokemon);
         System.out.println("| Nome: " + name);
-
+        System.out.println("| Habilidades: ");
     }
 
     // scanner.close();
