@@ -6,6 +6,12 @@ public class View {
 
     Scanner scanner = new Scanner(System.in);
 
+    public void Header() {
+        System.out.println("============================");
+        System.out.println("|    LISTA DE POKEMONS     |");
+        System.out.println("============================");
+    }
+
     public int ShowMenu() {
 
         int x;

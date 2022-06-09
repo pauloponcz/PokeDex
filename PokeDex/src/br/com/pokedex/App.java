@@ -4,7 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import br.com.pokedex.network.HTTPRequest;
-import br.com.pokedex.View;
+// import br.com.pokedex.View;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -18,9 +18,7 @@ public class App {
 
         while (views.ShowMenu() == 1) {
 
-            System.out.println("============================");
-            System.out.println("|    LISTA DE POKEMONS     |");
-            System.out.println("============================");
+            views.Header();
 
             for (int index = 0; index < array.length(); index++) {
 
@@ -52,7 +50,7 @@ public class App {
             // Mostra de qual tipo eh o pokemon
             System.out.println("| Tipo: ");
             JSONArray typesArray = objectPokemon.getJSONArray("types");
-            for (int i = 0; i < abilitiesArray.length(); i++) {
+            for (int i = 0; i < typesArray.length(); i++) {
                 JSONObject stats = typesArray.getJSONObject(i).getJSONObject("type");
                 String nameType = stats.getString("name");
                 System.out.println("|  - " + nameType);
@@ -61,10 +59,20 @@ public class App {
             // Mostra de qual eh os movimentos do pokemon
             System.out.println("| Movimentos: ");
             JSONArray movesArray = objectPokemon.getJSONArray("moves");
-            for (int i = 0; i < abilitiesArray.length(); i++) {
+            for (int i = 0; i < movesArray.length(); i++) {
                 JSONObject move = movesArray.getJSONObject(i).getJSONObject("move");
                 String nameMove = move.getString("name");
                 System.out.println("|  - " + nameMove);
+            }
+
+            // Mostra os status do pokemon
+            System.out.println("| Status: ");
+            JSONArray statsArray = objectPokemon.getJSONArray("stats");
+            for (int i = 0; i < statsArray.length(); i++) {
+                int baseStat = statsArray.getJSONObject(i).getInt("base_stat");
+                JSONObject stat = statsArray.getJSONObject(i).getJSONObject("stat");
+                String statMove = stat.getString("name");
+                System.out.println("|  - " + statMove + " = " + baseStat);
             }
         }
     }
